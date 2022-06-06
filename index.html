@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 580px;
+            box-shadow: 5px 5px 5px #888;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+                + 'contributors',
+            maxZoom: 18
+        });
+        var map = L.map('map', {
+            center: [1.620575222, -75.604280216],
+            zoom: 15,
+            layers: osm,
+            scrollWheelZoom: true,
+        });
+        L.control.scale().addTo(map);
+
+        var marker = L.marker([1.620575222, -75.604280216], {
+            draggable: true,
+            title: 'Click'
+        }).addTo(map).bindPopup("Universidad de la Amazonia");
+
+
+        var myIcon = L.icon({
+            iconUrl: 'https://img.icons8.com/ios-filled/344/home.png',
+            iconSize: [25, 25],
+            popupAnchor: [-1, -10]
+        });
+
+        var marker = L.marker([1.6335148786795544, -75.60333133553723], {
+            icon: myIcon,
+            draggable: true,
+            title: 'Click'
+        }).addTo(map).bindPopup("Casa");
+
+
+        var marker = L.marker([1.6155540579454097, -75.61382389100079], {
+            draggable: true,
+            title: 'Click'
+        }).addTo(map).bindPopup("Alcaldía de Florencia");
+
+        var marker = L.marker([1.6149372935306503,-75.61314582824708], {
+            draggable: true,
+            title: 'Click'
+        }).addTo(map).bindPopup("Plaza");
+
+        var circle = L.circle([1.6155540579454097, -75.61382389100079],
+            500, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5
+        }
+        ).addTo(map);
+
+        var polygon = L.polygon([
+            [1.6151841082603728, -75.61372850787713],
+            [1.614510375088371, -75.61352398256119],
+            [1.6147091628967474, -75.61279412082379],
+            [1.6154341395823315, -75.61300564318229]
+        ])
+            .addTo(map)
+            .bindPopup('Mercaolid');
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng) // Sets the geographical point where the popup will open.
+                .setContent("Has hecho click en la coordenada:<br> " + e.latlng.lat.toString() + "," + e.latlng.lng.toString()) // Sets the HTML content of the popup.
+                .openOn(map); // Adds the popup to the map and closes the previous one. 
+        }
+
+        map.on('click', onMapClick);
+
+
+        var pointA = new L.latLng(1.6335148786795544, -75.60333133553723);
+        var pointB = new L.latLng(1.633381568637184, -75.60308564908195);
+        var pointC = new L.latLng(1.6319794805837982, -75.60371622387335);
+        var pointD = new L.latLng(1.6315462078493697, -75.60407123124054);
+        var pointE = new L.latLng(1.6295146974592432, -75.60220166529973);
+        var pointF = new L.latLng(1.6292379932370746, -75.60208318672234);
+        var pointG = new L.latLng(1.629082562949257, -75.60207399540346);
+        var pointH = new L.latLng(1.6283215184165993,-75.60221314430238);
+        var pointI = new L.latLng(1.6274581956870489,-75.60245454311372);
+        var pointJ = new L.latLng(1.625736911378069,-75.60368299484254);
+        var pointK = new L.latLng(1.6255385077963844,-75.6038922071457);
+        var pointL = new L.latLng(1.6251631496155277,-75.60434281826019);
+        var pointM = new L.latLng(1.624744893274666,-75.60564100742342);
+        var pointN = new L.latLng(1.6239351916507732,-75.60618817806245);
+        var pointO = new L.latLng(1.6236724407229652,-75.6064885854721);
+        var pointP = new L.latLng(1.6233292557862216,-75.60716450214386);
+        var pointQ = new L.latLng(1.623028968918786,-75.60744881629945);
+        var pointR = new L.latLng(1.6228627386694179,-75.60758829116823);
+        var pointS = new L.latLng(1.6221227457806675,-75.6078350543976);
+        var pointT = new L.latLng(1.6219618777255453,-75.60794770717622);
+        var pointU = new L.latLng(1.6218707191553114,-75.6079798936844);
+        var pointV = new L.latLng(1.6211200013618776,-75.60865044593812);
+        var pointW = new L.latLng(1.6210342050249087,-75.60877919197084);
+        var pointX = new L.latLng(1.6208518877967593,-75.60966432094575);
+        var pointY = new L.latLng(1.6208465255250857,-75.60980916023256);
+        var pointZ = new L.latLng(1.6208036273512645,-75.60998618602754);
+        
+        var pointAA = new L.latLng(1.6206534837357143,-75.61011493206026);
+        var pointBB = new L.latLng(1.6204389928370413,-75.61004519462587);
+        var pointCC = new L.latLng(1.6203639210171357,-75.60984671115877);
+        var pointDD = new L.latLng(1.6203371096522157,-75.60968041419984);
+        var pointEE = new L.latLng(1.6195488553648345,-75.60749173164369);
+        var pointFF = new L.latLng(1.6194737835119402,-75.6072235107422);
+        var pointGG = new L.latLng(1.6193772625541458,-75.60705184936525);
+
+        var pointHH= new L.LatLng(1.619296828419133,-75.60685604810716);
+        var pointII= new L.LatLng(1.617645246808132,-75.60572683811189);
+        var pointJJ= new L.LatLng(1.617637203387893,-75.60564637184144);
+        var pointKK= new L.LatLng(1.6177042318888157,-75.60563296079637);
+        var pointLL= new L.LatLng(1.6187981367108315,-75.60640007257463);
+        var pointMM= new L.LatLng(1.6200475468884095,-75.60520380735399);
+        var latlngs = [pointA, pointB, pointC, pointD, pointE, pointG, pointH, pointI, pointJ, pointK, pointL, pointM, pointN,
+         pointO, pointP, pointQ, pointR, pointS, pointT, pointU, pointV, pointW, pointX, pointY, pointZ,
+        pointAA, pointBB, pointCC, pointDD, pointEE, pointFF, pointGG, pointHH, pointII, pointJJ, pointKK, pointLL, pointMM];
+        var polyline = L.polyline(
+            latlngs,
+            { color: 'blue' }
+        )
+            .addTo(map)
+            .bindPopup('Avda. Juan Carlos I');
+
+    </script>
+</body>
+
+</html>
