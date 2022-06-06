@@ -18,6 +18,8 @@
 <body>
     <div id="map"></div>
     <script>
+
+        //Sección General
         var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
                 + 'contributors',
@@ -31,64 +33,87 @@
         });
         L.control.scale().addTo(map);
 
+        //Sección Universidad
+        var myIcon = L.icon({
+            iconUrl: 'https://cdn-icons.flaticon.com/png/512/123/premium/123402.png?token=exp=1654532709~hmac=7b4607f5c638567be09ee41eb4747e50',
+            iconSize: [35, 35],
+            popupAnchor: [-1, -10]
+        });
+
         var marker = L.marker([1.620575222, -75.604280216], {
-            draggable: true,
+            icon: myIcon,
+            draggable: false,
             title: 'Click'
         }).addTo(map).bindPopup("Universidad de la Amazonia");
 
 
+        //Sección Casa
         var myIcon = L.icon({
-            iconUrl: 'https://img.icons8.com/ios-filled/344/home.png',
-            iconSize: [25, 25],
+            iconUrl: 'https://cdn-icons.flaticon.com/png/512/2163/premium/2163350.png?token=exp=1654532530~hmac=ce139fc897cf6182fe9491252dad2e52',
+            iconSize: [35, 35],
             popupAnchor: [-1, -10]
         });
 
-        var marker = L.marker([1.6335148786795544, -75.60333133553723], {
+        var marker = L.marker([1.633565793876652,-75.60331821441652], {
             icon: myIcon,
-            draggable: true,
+            draggable: false,
             title: 'Click'
         }).addTo(map).bindPopup("Casa");
 
 
-        var marker = L.marker([1.6155540579454097, -75.61382389100079], {
-            draggable: true,
-            title: 'Click'
-        }).addTo(map).bindPopup("Alcaldía de Florencia");
+        //Sección Alcaldía
+        var myIconAlcaldia = L.icon({
+            iconUrl: 'https://cdn-icons-png.flaticon.com/512/994/994294.png',
+            iconSize: [25, 25],
+            popupAnchor: [-1, -10]
+        });
 
-        var marker = L.marker([1.6149372935306503,-75.61314582824708], {
-            draggable: true,
+        var marker = L.marker([1.6155540579454097, -75.61382389100079], {
+            icon: myIconAlcaldia,
+            draggable: false,
             title: 'Click'
-        }).addTo(map).bindPopup("Plaza");
+        }).addTo(map).bindPopup("Alcaldía de la Ciudad de Florencia");
 
         var circle = L.circle([1.6155540579454097, -75.61382389100079],
             500, {
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5
-        }
-        ).addTo(map);
+        }).addTo(map);
+
+
+        //Sección Plaza Santander
+        var myIconParque = L.icon({
+            iconUrl: 'https://cdn-icons.flaticon.com/png/512/2163/premium/2163478.png?token=exp=1654532570~hmac=238c186ede1675e0ecec7ffb691cd204',
+            iconSize: [25, 25],
+            popupAnchor: [-1, -10]
+        });
+
+        var marker = L.marker([1.6149372935306503,-75.61314582824708], {
+            icon: myIconParque,
+            draggable: false,
+            title: 'Click'
+        }).addTo(map).bindPopup("Plaza Santander");
 
         var polygon = L.polygon([
             [1.6151841082603728, -75.61372850787713],
             [1.614510375088371, -75.61352398256119],
             [1.6147091628967474, -75.61279412082379],
             [1.6154341395823315, -75.61300564318229]
-        ])
-            .addTo(map)
-            .bindPopup('Mercaolid');
+        ]).addTo(map).bindPopup('Plaza Santader');
 
-        var popup = L.popup();
 
+        //Coordenadas al dar click 
+        /*var popup = L.popup();
         function onMapClick(e) {
             popup
-                .setLatLng(e.latlng) // Sets the geographical point where the popup will open.
+                .setLatLng(e.latlng) 
                 .setContent("Has hecho click en la coordenada:<br> " + e.latlng.lat.toString() + "," + e.latlng.lng.toString()) // Sets the HTML content of the popup.
-                .openOn(map); // Adds the popup to the map and closes the previous one. 
+                .openOn(map); 
         }
+        map.on('click', onMapClick);*/
 
-        map.on('click', onMapClick);
-
-
+        //Desde la Casa hasta la Universidad
         var pointA = new L.latLng(1.6335148786795544, -75.60333133553723);
         var pointB = new L.latLng(1.633381568637184, -75.60308564908195);
         var pointC = new L.latLng(1.6319794805837982, -75.60371622387335);
@@ -115,7 +140,6 @@
         var pointX = new L.latLng(1.6208518877967593,-75.60966432094575);
         var pointY = new L.latLng(1.6208465255250857,-75.60980916023256);
         var pointZ = new L.latLng(1.6208036273512645,-75.60998618602754);
-        
         var pointAA = new L.latLng(1.6206534837357143,-75.61011493206026);
         var pointBB = new L.latLng(1.6204389928370413,-75.61004519462587);
         var pointCC = new L.latLng(1.6203639210171357,-75.60984671115877);
@@ -123,22 +147,22 @@
         var pointEE = new L.latLng(1.6195488553648345,-75.60749173164369);
         var pointFF = new L.latLng(1.6194737835119402,-75.6072235107422);
         var pointGG = new L.latLng(1.6193772625541458,-75.60705184936525);
-
         var pointHH= new L.LatLng(1.619296828419133,-75.60685604810716);
         var pointII= new L.LatLng(1.617645246808132,-75.60572683811189);
         var pointJJ= new L.LatLng(1.617637203387893,-75.60564637184144);
         var pointKK= new L.LatLng(1.6177042318888157,-75.60563296079637);
         var pointLL= new L.LatLng(1.6187981367108315,-75.60640007257463);
         var pointMM= new L.LatLng(1.6200475468884095,-75.60520380735399);
+        var pointNN= new L.LatLng(1.620144067814271,-75.60519039630891);
+
         var latlngs = [pointA, pointB, pointC, pointD, pointE, pointG, pointH, pointI, pointJ, pointK, pointL, pointM, pointN,
-         pointO, pointP, pointQ, pointR, pointS, pointT, pointU, pointV, pointW, pointX, pointY, pointZ,
-        pointAA, pointBB, pointCC, pointDD, pointEE, pointFF, pointGG, pointHH, pointII, pointJJ, pointKK, pointLL, pointMM];
+                        pointO, pointP, pointQ, pointR, pointS, pointT, pointU, pointV, pointW, pointX, pointY, pointZ,
+                        pointAA, pointBB, pointCC, pointDD, pointEE, pointFF, pointGG, pointHH, pointII, pointJJ, pointKK,
+                        pointLL, pointMM, pointNN];
         var polyline = L.polyline(
             latlngs,
             { color: 'blue' }
-        )
-            .addTo(map)
-            .bindPopup('Avda. Juan Carlos I');
+        ).addTo(map).bindPopup('Desde mi casa hasta la Universidad');
 
     </script>
 </body>
